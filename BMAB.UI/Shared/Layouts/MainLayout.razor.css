@@ -1,0 +1,181 @@
+.dash-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.dash-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--mud-palette-text-primary);
+}
+
+.dash-date {
+    font-size: .75rem;
+    color: var(--mud-palette-text-secondary);
+    font-family: 'DM Mono', monospace;
+}
+
+.dash-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 80px;
+    color: var(--mud-palette-text-secondary);
+}
+
+/* ── Stat grid ── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--mud-palette-surface);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 4px solid transparent;
+    box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    transition: box-shadow .2s;
+}
+
+.stat-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+
+.stat-primary { border-left-color: #3b82f6; }
+.stat-success  { border-left-color: #22c55e; }
+.stat-warning  { border-left-color: #f59e0b; }
+.stat-info     { border-left-color: #06b6d4; }
+
+.stat-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--mud-palette-background-gray);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mud-palette-text-secondary);
+}
+
+.stat-body { display: flex; flex-direction: column; gap: 2px; }
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--mud-palette-text-primary);
+    font-family: 'DM Mono', monospace;
+}
+
+.stat-label {
+    font-size: .75rem;
+    color: var(--mud-palette-text-secondary);
+}
+
+.stat-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: .72rem;
+    font-weight: 600;
+}
+
+.trend-up   { color: #22c55e; }
+.trend-down { color: #ef4444; }
+
+/* ── Lower grid ── */
+.lower-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+}
+
+.section-title {
+    font-size: .95rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--mud-palette-text-primary);
+}
+
+.no-actions {
+    font-size: .82rem;
+    color: var(--mud-palette-text-disabled);
+    text-align: center;
+    padding: 20px 0;
+}
+
+.dash-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    color: var(--mud-palette-text-secondary);
+    font-size: .82rem;
+}
+/* 1. Target the component container and break through MudBlazor's dynamic inner layout wrapper */
+.side-rail ::deep .mud-drawer-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 2. Force the nav list container to stack structural blocks vertically */
+.side-rail ::deep .rail-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 3. Force the labels and links to stack downwards instead of inline rows */
+.side-rail ::deep .nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 4. Force the label text to occupy its own block row boundary */
+.side-rail ::deep .nav-group-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--mud-palette-text-secondary);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+/* 5. Style individual nav links to keep icons and text horizontally side-by-side */
+.side-rail ::deep .rail-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: var(--mud-palette-text-primary);
+    transition: background-color 0.2s;
+}
+
+/* 6. Highlight active menu links */
+.side-rail ::deep .rail-link.active {
+    background-color: var(--mud-palette-action-default-hover);
+    color: var(--mud-palette-primary);
+    font-weight: 500;
+}
+
+
+
+
+@media (max-width: 900px) {
+    .lower-grid { grid-template-columns: 1fr; }
+}
+
+

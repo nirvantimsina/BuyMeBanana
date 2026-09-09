@@ -1,0 +1,29 @@
+# Ignore build folders everywhere
+[Bb]in/
+[Oo]bj/
+# Ignore specifically for the UI path
+**/BMAB_UI/bin/
+**/BMAB_UI/obj/
+**/BMAB_ui/bin/
+**/BMAB_ui/obj/
+
+**/bin/
+**/obj/
+**/debug/
+**/Release/
+*.user
+*.suo
+.idea/
+
+.vscode/
+BMAB_API/BMAB_API.csproj.lscache
+BMAB_UI/BMAB_UI.csproj.lscache
+/BMAB_API/.vs
+
+# VS Code C# Dev Tools - Auto-generated runners
+.vscodecsdt/Runners/
+/.vs
+/BMAB.Presentation/.vs
+
+
+
