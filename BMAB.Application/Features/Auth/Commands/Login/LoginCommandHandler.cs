@@ -3,7 +3,6 @@ using BMAB.Application.Features.Auth.Queries.GetMenuList;
 using BMAB.Application.Helpers;
 using BMAB.Application.Interfaces;
 using BMAB.Application.Models.Auth.Response;
-using BMAB.Domain.Models;
 using System.Data;
 using BMAB.Shared.Wrappers;
 

@@ -10,8 +10,3 @@ namespace BMAB.Application.Features.Auth.Commands.Login
         public string? Password { get; set; }
     }
 }
-
-
-
-
-
