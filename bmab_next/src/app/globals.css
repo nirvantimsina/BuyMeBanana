@@ -1,26 +1,22 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* 🚀 Map using Tailwind v4 native --color-* formatting */
+  --color-bg-app: #edede9;         /* Page Backgrounds */
+  --color-bg-surface: #fdfbf9;     /* Cards & Containers */
+  
+  --color-text-main: #34342a;      /* Premium Ultra Off-black text */
+  --color-text-muted: #989881;     /* Soft secondary text */
+  --color-border-subtle: #b6a391;  /* Razor thin dividers */
+  
+  --color-action-cta: #986b50;     /* Almond Silk 300 (Terracotta Fills) */
+  --color-action-hover: #825a42;   /* Calculated button hover deep fill */
+  --color-action-light: #f5ece6;   /* Ghost action alternative button */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-bg-app);
+    color: var(--color-text-main);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
