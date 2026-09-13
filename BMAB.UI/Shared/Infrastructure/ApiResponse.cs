@@ -6,18 +6,18 @@ namespace BMAB.UI.Shared.Infrastructure;
 public class ApiResponse
 {
     [JsonPropertyName("status")]
-    public int Status { get; set; }
+    public string? Status { get; set; }
 
     [JsonPropertyName("msg")]
     public string? Message { get; set; }
 
     [JsonIgnore]
-    public bool Success => Status == 0;
+    public bool Success => Status == "0";
 
-    public static ApiResponse Ok(string message = "Success", int status = 0)
+    public static ApiResponse Ok(string message = "Success", string? status = "0")
         => new() { Status = status, Message = message };
 
-    public static ApiResponse Fail(string message, int status = 1)
+    public static ApiResponse Fail(string message, string? status = "1")
         => new() { Status = status, Message = message };
 }
 
@@ -27,11 +27,11 @@ public class ApiResponse<T> : ApiResponse
     [JsonPropertyName("data")]
     public T? Data { get; set; }
 
-    public static ApiResponse<T> Ok(T? data = default, string message = "Success", int status = 0)
+    public static ApiResponse<T> Ok(T? data = default, string message = "Success", string? status = "0")
         => new() { Status = status, Message = message, Data = data };
 
     // Shadows the base Fail method to handle default generic data cleanly
-    public static new ApiResponse<T> Fail(string message, int status = 1)
+    public static new ApiResponse<T> Fail(string message, string? status = "1")
         => new() { Status = status, Message = message, Data = default };
 }
 

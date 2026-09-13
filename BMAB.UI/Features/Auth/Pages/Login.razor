@@ -5,48 +5,80 @@
 
 <PageTitle>BMAB - Login</PageTitle>
 
-<MudContainer MaxWidth="MaxWidth.Small" Class="mt-10">
-    <EditForm Model="@request" OnValidSubmit="SignIn">
-        <DataAnnotationsValidator />
-        <MudPaper Elevation="3" Class="pa-6">
+<div class="login-page">
 
-            <MudText Typo="Typo.h5" Class="mb-4">Login</MudText>
+    <div class="brand-panel">
+        <div class="brand-panel-inner">
+            <span class="brand-mark">BMAB</span>
+            <p class="brand-tagline">Sign in to pick up where you left off.</p>
+        </div>
+    </div>
 
-            <MudTextField @bind-Value="request.UserName" Label="Username" Required="true" onkeyup="@HandleKeyUp" />
-            <MudTextField @bind-Value="request.Password" Label="Password" InputType="InputType.Password" Required="true"
-                          Class="mt-2" onkeyup="@HandleKeyUp" />
+    <div class="form-panel">
+        <div class="form-shell">
 
-            @if (!string.IsNullOrEmpty(error))
-            {
-                <MudText Color="Color.Error" Class="mt-2">@error</MudText>
-            }
+            <EditForm Model="@request" OnValidSubmit="SignIn" class="login-form">
+                <DataAnnotationsValidator />
 
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" FullWidth="true" Disabled="IsLoading"
-                       OnClick="SignIn">
+                <h1 class="form-title">Log in</h1>
 
-                @if (IsLoading)
+                <MudTextField @bind-Value="request.UserName"
+                              Label="Username"
+                              Required="true"
+                              Variant="Variant.Outlined"
+                              Class="login-field"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Outlined.Person"
+                              onkeyup="@HandleKeyUp" />
+
+                <div class="password-field-wrap">
+                    <MudTextField @bind-Value="request.Password"
+                                  Label="Password"
+                                  InputType="@PasswordInput"
+                                  Required="true"
+                                  Variant="Variant.Outlined"
+                                  Class="login-field password-input"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@Icons.Material.Outlined.Lock"
+                                  onkeyup="@HandleKeyUp" />
+
+                    <MudIconButton Icon="@PasswordIcon"
+                                   Size="Size.Small"
+                                   Class="password-toggle-btn"
+                                   OnClick="ToggleShowPassword"
+                                   aria-label="@(showPassword ? "Hide password" : "Show password")" />
+                </div>
+
+                @if (!string.IsNullOrEmpty(error))
                 {
-                    <MudProgressCircular Indeterminate="true" Size="Size.Small" Class="mr-2" />
-                    <span>Logging in...</span>
-                }
-                else
-                {
-                    <span>Login</span>
+                    <p class="form-error" role="alert">@error</p>
                 }
 
-            </MudButton>
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           FullWidth="true"
+                           Disabled="IsLoading"
+                           OnClick="SignIn"
+                           Class="login-submit">
+                    @if (IsLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" Size="Size.Small" Class="mr-2" />
+                        <span>Logging in...</span>
+                    }
+                    else
+                    {
+                        <span>Log in</span>
+                    }
+                </MudButton>
 
-            <MudText Align="Align.Center" Class="mt-4" Typo="Typo.body2">
-                New to BMAB?
-                <MudLink href="/signup" Color="Color.Primary" Underline="Underline.Hover">Sign Up</MudLink>
-            </MudText>
+                <p class="login-signup">
+                    New to BMAB?
+                    <MudLink href="/signup" Class="login-signup-link" Underline="Underline.Hover">Sign up</MudLink>
+                </p>
 
-        </MudPaper>
-    </EditForm>
-</MudContainer>
+            </EditForm>
 
+        </div>
+    </div>
 
-
-
-
-
+</div>

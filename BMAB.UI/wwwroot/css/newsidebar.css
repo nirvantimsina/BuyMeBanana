@@ -7,9 +7,14 @@
     --sidebar-text-muted: var(--mud-palette-drawer-icon, var(--mud-palette-text-secondary));
     --sidebar-hover-bg: var(--mud-palette-action-default-hover);
     --sidebar-active-bg: var(--mud-palette-action-selected);
-    --sidebar-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --sidebar-overlay-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     --sidebar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --icon-center-line: 32px; /* Center point for icons */
+
+    /* Ties into app-shared.css tokens where available, with safe fallbacks
+       so this file still works standalone if app-shared.css isn't loaded. */
+    --sidebar-item-radius: var(--app-radius-raised, 8px);
+    --sidebar-accent: var(--mud-palette-primary);
 }
 
 /* =========================================
@@ -57,12 +62,16 @@
     bottom: 0;
     width: var(--sidebar-width-expanded);
     background-color: var(--sidebar-bg);
-    box-shadow: var(--sidebar-shadow);
+    /* Flat border instead of a drop shadow for the pinned/resting state —
+       shadows read as elevation, and a resting sidebar isn't "floating"
+       above anything. Elevation is reserved for the collapsed-hover
+       overlay below, where the sidebar genuinely sits on top of content. */
+    border-right: 1px solid var(--mud-palette-divider);
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: hidden;
-    transition: width var(--sidebar-transition);
+    transition: width var(--sidebar-transition), box-shadow var(--sidebar-transition);
 }
 
 /* Scrollable Menu Wrapper */
@@ -79,10 +88,13 @@
     width: var(--sidebar-width-collapsed);
 }
 
-/* Hover over collapsed sidebar -> Expand fully on top of content (absolute) */
+/* Hover over collapsed sidebar -> Expand fully on top of content (absolute).
+   This is the one case that genuinely needs elevation, since it's
+   overlaying page content rather than sitting flush beside it. */
 .sidebar-collapsed .sidebar-container:hover .sidebar {
     width: var(--sidebar-width-expanded);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow when hovering over collapsed */
+    border-right: none;
+    box-shadow: var(--sidebar-overlay-shadow);
 }
 
 /* Hide scrollbar for a cleaner look */
@@ -129,6 +141,14 @@
     border-bottom: 1px solid var(--mud-palette-divider);
     overflow: hidden;
     position: relative;
+    transition: background-color 0.2s;
+}
+
+/* Subtle fill on focus-within so the search bar reads as an actual input
+   rather than blending into the sidebar background. Purely additive —
+   doesn't touch the icon/input's own positioning. */
+.sidebar-search:focus-within {
+    background-color: var(--mud-palette-background-gray, transparent);
 }
 
 .search-icon {
@@ -138,6 +158,10 @@
     font-size: 20px;
     transition: color 0.2s;
     pointer-events: none; /* Let clicks pass to input */
+}
+
+.sidebar-search:focus-within .search-icon {
+    color: var(--sidebar-accent);
 }
 
 .menu-search-input {
@@ -166,6 +190,7 @@
    Menu Items
    ========================================= */
 .newSideMenu {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -180,10 +205,26 @@
     background-color: var(--sidebar-hover-bg);
 }
 
+/* "Folder tab" treatment for the active item: rounded only on the side
+   that opens into the content area, plus a left accent bar. This reads
+   as "you are here" more clearly than a flat full-width fill, and needs
+   no change to the sidebar's width/inset math. */
 .newSideMenu.activeClassMenu {
-    background-color: var(--sidebar-active-bg);
-    color: var(--mud-palette-primary);
+    background-color: color-mix(in srgb, var(--sidebar-accent) 14%, var(--sidebar-active-bg) 40%);
+    color: var(--sidebar-accent);
     font-weight: 500;
+    border-radius: 0 var(--sidebar-item-radius) var(--sidebar-item-radius) 0;
+}
+
+.newSideMenu.activeClassMenu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--sidebar-accent);
 }
 
 /* The wrapper containing Icon and Text */
@@ -207,7 +248,7 @@
 
 .newSideMenu:hover .material-icons-outlined,
 .newSideMenu.activeClassMenu .material-icons-outlined {
-    color: var(--mud-palette-primary);
+    color: var(--sidebar-accent);
 }
 
 /* Menu Text */
@@ -251,7 +292,7 @@
 /* Indent child icons further */
 .childMenu .menu-item-content .material-icons-outlined {
     /* Shift child icons slightly for visual hierarchy */
-    margin-left: 26px; 
+    margin-left: 26px;
     font-size: 20px;
 }
 
@@ -264,14 +305,20 @@
     margin-top: auto; /* Push it to the very bottom */
 }
 
+/* Neutral at rest, red only on hover/focus — a permanently red row reads
+   as a standing warning rather than an action. Revert to the previous
+   always-red treatment if you'd rather keep that convention. */
 .logout-menu .material-icons-outlined,
 .logout-menu span {
-    color: var(--mud-palette-error) !important;
+    color: var(--sidebar-text-muted);
+    transition: color 0.2s;
 }
 
 .logout-menu:hover {
     background-color: rgba(244, 67, 54, 0.08); /* Soft red hover */
 }
 
-
-
+.logout-menu:hover .material-icons-outlined,
+.logout-menu:hover span {
+    color: var(--mud-palette-error) !important;
+}

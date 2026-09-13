@@ -1,4 +1,3 @@
-using BMAB.UI.Shared.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -15,6 +14,16 @@ namespace BMAB.UI.Features.Auth.Pages
         IAuthManager AuthManager,
         ISnackbar Snackbar) : ComponentBase
     {
+        private bool isPasswordVisible;
+        private InputType passwordInputKind => isPasswordVisible ? InputType.Text : InputType.Password;
+        private string passwordIcon => isPasswordVisible ? Icons.Material.Filled.Visibility :
+            Icons.Material.Filled.VisibilityOff;
+
+        private void TogglePasswordVisibility() => isPasswordVisible = !isPasswordVisible;
+        private bool isPasswordVisible2;
+        private InputType passwordInputKind2 => isPasswordVisible2 ? InputType.Text : InputType.Password;
+        private string passwordIcon2 => isPasswordVisible2 ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
+        private void TogglePasswordVisibility2() => isPasswordVisible2 = !isPasswordVisible2;
         [CascadingParameter] protected Task<AuthenticationState> AuthStateTask { get; set; } = default!;
         protected SignUpRequest request = new();
         protected string? error;
@@ -67,10 +76,4 @@ namespace BMAB.UI.Features.Auth.Pages
         }
     }
 }
-
-
-
-
-
-
 

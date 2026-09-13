@@ -19,9 +19,9 @@ namespace BMAB.Application.Features.Auth.Queries.GetMenuList
 
         public async Task<ApiResponse> Handle(GetMenuListQuery request, CancellationToken cancellationToken)
         {
-            var MenuListParams = new { p_flag = "A", p_role = request.RoleId };
+            var MenuListParams = new {p_role = request.RoleId };
             var result = await _repo.QueryAsync<MenuListResponseModel>(
-                "SELECT * FROM permission.fn_MenuList(@p_flag, @p_role);",
+                "SELECT * FROM permission.get_menulist_by_role(@p_role);",
                 MenuListParams,
                 commandType: CommandType.Text);
 
@@ -29,8 +29,3 @@ namespace BMAB.Application.Features.Auth.Queries.GetMenuList
         }
     }
 }
-
-
-
-
-

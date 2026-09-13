@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
-using BMAB.UI.Features.Auth;
 using BMAB.UI.Features.Auth.Managers.Interface;
 using BMAB.UI.Features.Auth.Models.RequestModel;
 using BMAB.UI.Features.Auth.Models.ResponseModel;
@@ -14,6 +13,12 @@ namespace BMAB.UI.Features.Auth.Pages
     [AllowAnonymous]
     public partial class LoginBase : ComponentBase
     {
+    protected bool showPassword;
+
+    protected InputType PasswordInput => showPassword ? InputType.Text : InputType.Password;
+    protected string PasswordIcon => showPassword ? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility;
+
+    protected void ToggleShowPassword() => showPassword = !showPassword;
         [CascadingParameter] protected Task<AuthenticationState> AuthStateTask { get; set; } = default!;
         [Inject] protected IAuthManager AuthManager { get; set; } = default!;
         [Inject] protected NavigationManager Navigation { get; set; } = default!;

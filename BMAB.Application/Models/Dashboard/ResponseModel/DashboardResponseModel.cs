@@ -1,6 +1,8 @@
+using BMAB.Domain.Models;
+
 namespace BMAB.Application.Models.Dashboard.ResponseModel;
 
-public class DashboardResponseModel
+public class DashboardResponseModel : StatusResponse
 {
     public string? Name { get; set; }
     public string? UserRole { get; set; }
