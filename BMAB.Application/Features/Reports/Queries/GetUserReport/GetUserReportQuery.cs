@@ -1,5 +1,6 @@
 using MediatR;
 using BMAB.Domain.Models;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.Reports.Queries.GetUserReport
 {

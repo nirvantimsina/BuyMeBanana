@@ -4,6 +4,7 @@ using BMAB.Application.Models.Auth.Response;
 using BMAB.Domain.Models;
 using System.Data;
 using System.Data.Common;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.Auth.Queries.GetMenuList
 {

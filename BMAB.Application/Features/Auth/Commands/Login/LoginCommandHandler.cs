@@ -5,6 +5,7 @@ using BMAB.Application.Interfaces;
 using BMAB.Application.Models.Auth.Response;
 using BMAB.Domain.Models;
 using System.Data;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.Auth.Commands.Login
 {

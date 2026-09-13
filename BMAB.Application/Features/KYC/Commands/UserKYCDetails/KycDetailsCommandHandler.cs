@@ -3,6 +3,7 @@ using BMAB.Application.Helpers;
 using BMAB.Application.Interfaces;
 using BMAB.Domain.Models;
 using System.Data;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.KYC.Commands.UserKYCDetails
 {

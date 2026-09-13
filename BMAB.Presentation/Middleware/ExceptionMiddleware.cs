@@ -1,4 +1,5 @@
 using BMAB.Domain.Models;
+using BMAB.Shared.Wrappers;
 using System.Net;
 using System.Text.Json;
 

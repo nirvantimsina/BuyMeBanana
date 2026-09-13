@@ -4,6 +4,7 @@ using BMAB.Application.Interfaces;
 using BMAB.Domain.Models;
 using System.Data;
 using System.Data.Common;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.Auth.Commands.SignUp
 {

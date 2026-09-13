@@ -3,6 +3,7 @@ using BMAB.Application.Interfaces;
 using BMAB.Application.Models.Reports.ResponseModel;
 using BMAB.Domain.Models;
 using System.Data;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.Reports.Queries.GetUserReport
 {

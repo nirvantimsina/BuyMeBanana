@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BMAB.Domain.Models;
 using System.Security.Claims;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Presentation.Controllers
 {

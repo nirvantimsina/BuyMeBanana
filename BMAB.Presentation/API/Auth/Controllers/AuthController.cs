@@ -5,6 +5,7 @@ using BMAB.Application.Features.Auth.Commands.Login;
 using BMAB.Application.Features.Auth.Commands.SignUp;
 using BMAB.Application.Features.Auth.Queries.GetMenuList;
 using BMAB.Domain.Models;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Presentation.Controllers
 {

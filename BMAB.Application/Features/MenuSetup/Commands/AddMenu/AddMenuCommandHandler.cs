@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using BMAB.Application.Interfaces;
 using BMAB.Domain.Models;
 using System.Data;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.MenuSetup.Commands.AddMenu
 {

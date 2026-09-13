@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.Common;
 using BMAB.Application.Features.CreatorSetup.Commands.CreatorDetails;
 using BMAB.Application.Features.KYC.Commands.UserKYCDetails;
+using BMAB.Shared.Wrappers;
 
 namespace BMAB.Application.Features.CreatorSetup.Commands.CreatorDetails;
 
