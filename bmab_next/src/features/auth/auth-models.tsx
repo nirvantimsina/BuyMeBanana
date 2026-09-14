@@ -3,12 +3,6 @@ export interface LoginRequest {
   password?: string;
 }
 
-export interface AuthResponse {
-  token: string;
-  isKycVerified: boolean;
-  profileSlug: string;
-}
-
 export interface MenuItem {
   menuId: number;
   menuName: string;

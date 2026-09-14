@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { authService } from "@/src/services/auth-service";
-import { LoginRequest } from "@/src/types/auth";
+import { authService } from "@/src/features/auth/auth-service";
+import { LoginRequest } from "@/src/features/auth/auth-models";
 import { ApiServerError } from "@/src/services/api-client";
 import { getErrorMessage } from "@/src/constants/error-codes";
 
@@ -13,10 +13,10 @@ export function useAuth() {
   const login = async (credentials: LoginRequest) => {
     setIsLoading(true);
     setError(null);
-    
+
     try {
       const data = await authService.login(credentials);
-      
+
       localStorage.setItem("token", data.token);
       localStorage.setItem("user_menu", JSON.stringify(data.menuList));
       router.push("/dashboard");

@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* 🚀 Map using Tailwind v4 native --color-* formatting */
-  --color-bg-app: #edede9;         /* Page Backgrounds */
-  --color-bg-surface: #fdfbf9;     /* Cards & Containers */
-  
-  --color-text-main: #34342a;      /* Premium Ultra Off-black text */
-  --color-text-muted: #989881;     /* Soft secondary text */
-  --color-border-subtle: #b6a391;  /* Razor thin dividers */
-  
-  --color-action-cta: #986b50;     /* Almond Silk 300 (Terracotta Fills) */
-  --color-action-hover: #825a42;   /* Calculated button hover deep fill */
-  --color-action-light: #f5ece6;   /* Ghost action alternative button */
+  --color-bg-app: #edede9;
+  --color-bg-surface: #fdfbf9;
+  --color-text-main: #34342a;
+  --color-text-muted: #989881;
+  --color-border-subtle: #b6a391;
+  --color-action-cta: #986b50;
+  --color-action-hover: #825a42;
+  --color-action-light: #f5ece6;
+
+  --font-brand: "Cabinet Grotesk", system-ui, sans-serif;
 }
 
 @layer base {

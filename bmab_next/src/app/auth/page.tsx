@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAuth } from "@/src/hooks/use-auth";
+import { useAuth } from "@/src/features/auth/use-auth-hook";
 import { FormCard } from "@/src/components/ui/form-card";
 import { InputField } from "@/src/components/ui/input-field";
 import { Button } from "@/src/components/primitives/button";
+import Image from "next/image";
 
 export default function AuthPage() {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
@@ -41,26 +42,35 @@ export default function AuthPage() {
       {/* 🧩 LEFT PANEL: Premium Branding Canvas */}
       <div className="hidden md:flex md:w-1/2 bg-bg-surface border-r border-border-subtle/10 flex-col justify-between p-16 select-none relative overflow-hidden">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-action-light/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="flex items-center gap-3 relative z-10">
-          <div className="w-10 h-10 bg-action-light text-action-cta rounded-xl flex items-center justify-center font-black text-lg">☕</div>
-          <span className="font-bold tracking-tight text-lg">BuyMeACoffee</span>
+        <div className="flex items-center gap-1 relative z-10">
+          <Image
+            src="/logo.svg"
+            alt="Nudge Logo"
+            width={100}
+            height={70}
+            className="object-contain"
+            priority
+          />
+          <span className="font-brand font-extrabold tracking-tight text-7xl text-text-main">
+            Nudge
+          </span>
         </div>
         <div className="max-w-md my-auto relative z-10 space-y-4">
           <h1 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-text-main">
             Fund your creative passions directly.
           </h1>
           <p className="text-text-muted text-base font-medium leading-relaxed">
-            Accept support, manage recurring dynamic tiers, and build a premium digital space trusted by niche creators globally.
+            Accept support, manage recurring dynamic tiers, and build a premium digital space trusted by creators nationally.
           </p>
         </div>
         <div className="text-xs text-text-muted relative z-10 font-medium">
-          &copy; {new Date().getFullYear()} BMAB Ecosystem. All rights reserved.
+          &copy; {new Date().getFullYear()} Nudge Ecosystem. All rights reserved.
         </div>
       </div>
 
       {/* 🧩 RIGHT PANEL: Structural Form Engine */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-6 sm:p-12">
-        <div className="w-full max-w-[540px]">
+        <div className="w-full max-w-135">
           <FormCard
             title={activeTab === "login" ? "Welcome Back" : "Start Your Page"}
             subtitle={activeTab === "login" ? "Continue managing your workspace" : "Join our community of independent creators"}
@@ -127,7 +137,7 @@ export default function AuthPage() {
 
                   {/* 📄 PANEL B: SIGNUP FIELDS */}
                   <div
-                    className={`w-1/2 pl-4 space-y-4 shrink-0 transition-opacity duration-300 ${activeTab === "signup" ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+                    className={`w-1/2 pl-4 flex flex-col justify-center min-h-[300] space-y-4 shrink-0 transition-opacity duration-300 ${activeTab === "signup" ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
                       }`}
                     aria-hidden={activeTab !== "signup"}
                   >
@@ -201,7 +211,7 @@ export default function AuthPage() {
                   variant="nudge"
                   isLoading={activeTab === "login" ? isLoginLoading : false}
                 >
-                  {activeTab === "login" ? "Continue to Dashboard" : "Create Creator Account"}
+                  {activeTab === "login" ? "Continue to Dashboard" : "Get Started"}
                 </Button>
               </div>
 

@@ -17,13 +17,6 @@ export default function Home() {
             oa machickney randi anuj muji fuck you {" "}
           </h1>
    
-            <Image
-              className="h-[80px] w-520"
-              src="/image-copy.png"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
         </div>
       </main>
     </div>

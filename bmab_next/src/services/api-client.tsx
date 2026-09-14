@@ -1,4 +1,4 @@
-import { ApiResponse } from "@/src/types/auth";
+import { ApiResponse } from "@/src/features/auth/auth-models";
 
 const API_BASE_URL = "http://localhost:5043/api";
 

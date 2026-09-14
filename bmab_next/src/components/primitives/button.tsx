@@ -9,9 +9,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export function Button({ children, variant = "nudge", isLoading = false, className = "", ...props }: ButtonProps) {
   // Baseline configuration with flexible centering 
   const baseStyle = "w-full font-semibold py-3.5 px-6 rounded-2xl active:scale-[0.99] transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:pointer-events-none text-sm tracking-wide shadow-xs cursor-pointer";
-  
+
   const variants = {
-    // 🚀 Now pointing cleanly to our premium dark terracotta color fill
     nudge: "bg-action-cta text-white hover:bg-action-hover",
     outline: "bg-transparent border border-border-subtle text-text-main hover:bg-bg-app",
     tint: "bg-action-light text-action-cta hover:opacity-90",
