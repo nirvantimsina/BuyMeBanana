@@ -7,7 +7,7 @@ export const creatorService = {
    * Backend should treat "all" the same as an omitted category filter.
    */
   getFeaturedCreators: (category: CreatorCategory = "all") =>
-    apiClient.get<CreatorListResponse>("/creators/featured", {
+    apiClient.get<CreatorListResponse>("/PublicAPI/FeaturedCreators", {
       params: { category: category === "all" ? undefined : category },
     }),
 };

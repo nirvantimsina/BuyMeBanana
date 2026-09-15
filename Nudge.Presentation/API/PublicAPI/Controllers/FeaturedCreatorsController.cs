@@ -1,10 +1,10 @@
+using System.Reflection.Metadata;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Nudge.Application.Features.Public.Creators.Queries.GetFeaturedCreators;
 using Nudge.Application.Models.Public.Creators.ResponseModel;
-using Nudge.Shared.Wrappers;
 
 namespace Nudge.Presentation.Controllers.PublicAPI;
 
@@ -13,13 +13,11 @@ public class PublicAPIController(IMediator mediator, ILogger<PublicAPIController
 {
     [HttpGet("FeaturedCreators")]
     [AllowAnonymous]
-    public async Task<IActionResult> GetFeaturedCreatorsAsync()
+    public async Task<IActionResult> GetFeaturedCreatorsAsync([FromQuery]string Category = "all")
     {
-        ErrorOr<List<FeaturedCreatorsResponseModel>> result = await mediator.Send(new GetFeaturedCreatorsQuery());        
+        string searchCategory = string.IsNullOrWhiteSpace(Category) ? "all" : Category;
+        ErrorOr<List<FeaturedCreatorsResponseModel>> result = await mediator.Send(new GetFeaturedCreatorsQuery(searchCategory));        
         
-        return result.Match<IActionResult>(
-            data => Ok(ApiResponse<List<FeaturedCreatorsResponseModel>>.Ok(data)),
-            errors => BadRequest(ApiResponse.Fail(errors.First().Description, errors.First().Code))
-        );
+        return HandleErrorOr(result);
     }
 }

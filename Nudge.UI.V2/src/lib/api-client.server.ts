@@ -1,4 +1,4 @@
-import { ApiResponse } from "@/src/features/auth/models/auth-models";
+import { ApiResponse } from "@/src/features/auth/auth-models";
 import { ApiServerError } from "./api-client";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:5043/api";
@@ -14,7 +14,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:5
  * cookie:
  *
  *   import { cookies } from "next/headers";
- *   import { serverApiClient } from "@/lib/api-client.server";
+ *   import { serverApiClient } from "@/src/lib/api-client.server";
  *
  *   export default async function DashboardPage() {
  *     const token = (await cookies()).get("token")?.value;

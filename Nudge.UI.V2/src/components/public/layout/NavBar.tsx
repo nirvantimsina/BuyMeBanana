@@ -37,7 +37,7 @@ export function NavBar({
         <div className="flex items-center gap-space-sm">
           <Link className="flex items-center gap-2 group" href={homeHref}>
             <Image
-              src={logoUrl}
+              src="/logo.svg"
               alt="Nudge Logo"
               width={32}
               height={32}

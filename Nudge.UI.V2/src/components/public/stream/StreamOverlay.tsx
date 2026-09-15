@@ -33,7 +33,7 @@ export function StreamOverlay({
       <div className="relative aspect-video rounded-xl bg-surface-container-highest/20 border border-white/10 overflow-hidden flex flex-col justify-end p-4">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/60 pointer-events-none" />
 
-        <div className="relative z-10 w-full bg-gradient-to-r from-surface-container-lowest via-surface-container to-surface-bright text-on-surface p-3.5 rounded-xl border-2 border-secondary-container shadow-2xl">
+        <div className="stream-alert-glow relative z-10 w-full bg-gradient-to-r from-surface-container-lowest via-surface-container to-surface-bright text-on-surface p-3.5 rounded-xl border-2 border-secondary-container shadow-2xl">
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-2">
               <span className="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center shadow-sm">

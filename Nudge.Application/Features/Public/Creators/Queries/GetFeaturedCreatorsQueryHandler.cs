@@ -6,7 +6,8 @@ using Nudge.Application.Interfaces;
 using Nudge.Application.Models.Public.Creators.ResponseModel;
 
 namespace Nudge.Application.Features.Public.Creators.Queries.GetFeaturedCreators;
-public record GetFeaturedCreatorsQuery : IRequest<ErrorOr<List<FeaturedCreatorsResponseModel>>>;
+
+public record GetFeaturedCreatorsQuery(string? Category) : IRequest<ErrorOr<List<FeaturedCreatorsResponseModel>>>;
 
 public class GetFeaturedCreatorsQueryHandler : IRequestHandler<GetFeaturedCreatorsQuery, ErrorOr<List<FeaturedCreatorsResponseModel>>>
 {
@@ -20,8 +21,8 @@ public class GetFeaturedCreatorsQueryHandler : IRequestHandler<GetFeaturedCreato
     public async Task<ErrorOr<List<FeaturedCreatorsResponseModel>>> Handle(GetFeaturedCreatorsQuery request, CancellationToken cancellationToken)
     {
         var result = await _repo.QueryAsync<FeaturedCreatorsResponseModel>(
-            "select * from creators.public_featured_creators();",
-            new {},
+            "select * from creator.public_featured_creators(@p_category);",
+            new { p_category = request.Category },
             commandType: CommandType.Text
         );
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Creator } from "@/features/creators/models/creator.model";
+import type { Creator } from "@/src/features/creators/models/creator.model";
 
 export interface CreatorCardProps {
   creator: Creator;
@@ -14,24 +14,25 @@ export function CreatorCard({
   bannerGradientClassName = "from-primary to-primary-container",
 }: CreatorCardProps) {
   return (
-    <article className="w-[300px] sm:w-[320px] shrink-0 bg-surface-container-lowest rounded-2xl border border-outline-variant overflow-hidden hover:shadow-lg transition-shadow flex flex-col group">
-      <div className={`h-28 bg-gradient-to-r ${bannerGradientClassName} relative p-3`}>
-        <span className="absolute top-2 right-2 bg-surface-container-lowest/90 backdrop-blur-md text-[11px] font-bold px-2 py-0.5 rounded-full text-on-surface">
+    <article className="w-75 sm:w-[320px] shrink-0 bg-surface-container-lowest rounded-2xl border border-outline-variant overflow-hidden hover:shadow-lg transition-shadow flex flex-col group">
+      <div className={`h-28 bg-linear-to-r ${bannerGradientClassName} relative p-3`}>
+        <span className="absolute top-2 right-2 bg-surface-container-lowest/90 backdrop-blur-md text-[11px] font-bold px-2 py-0.5 rounded-full text-on-surface capitalize">
           {creator.category}
         </span>
       </div>
 
-      <div className="p-4 pt-0 relative flex-grow flex flex-col">
+      <div className="p-4 pt-0 relative grow flex flex-col">
         <div className="-mt-8 mb-2 flex items-end justify-between">
           <Image
-            src={creator.avatarUrl}
+            src={creator.avatar === "later" ? "/fallback-avatar.png" : creator.avatar} // handle placeholder string safely
             alt={creator.name}
             width={64}
             height={64}
+            unoptimized // 💡 Add this if using dynamic string inputs without config domains configured yet
             className="w-16 h-16 rounded-full border-4 border-surface-container-lowest object-cover shadow"
           />
           <span className="text-xs font-semibold text-tertiary bg-tertiary-fixed px-2 py-0.5 rounded-full">
-            {creator.nudgeCount.toLocaleString()} Nudgers
+            {creator.nudgeCount.toLocaleString()} Nudges
           </span>
         </div>
 

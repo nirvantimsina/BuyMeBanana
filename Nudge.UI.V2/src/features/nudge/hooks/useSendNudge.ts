@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { ApiError } from "@/lib/api-client";
+import { ApiServerError } from "@/src/lib/api-client";
 import type { CreateNudgePayload, CreateNudgeResult } from "../models/nudge.model";
 import { nudgeService } from "../services/nudge.service";
 
@@ -23,7 +23,7 @@ export function useSendNudge(): UseSendNudgeResult {
       const result = await nudgeService.createNudge(payload);
       return result;
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't send that nudge. Please try again.");
+      setError(err instanceof ApiServerError ? err.message : "Couldn't send that nudge. Please try again.");
       return null;
     } finally {
       setIsSending(false);

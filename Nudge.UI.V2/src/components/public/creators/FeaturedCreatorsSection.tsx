@@ -7,7 +7,7 @@ import { CreatorCard } from "@/src/components/public/cards/CreatorCard";
 
 const CATEGORIES: { label: string; value: CreatorCategory }[] = [
   { label: "All Creators", value: "all" },
-  { label: "Filmmakers", value: "filmmakers" },
+  { label: "Live Stream", value: "streamer" },
   { label: "Music", value: "music" },
   { label: "Art & Heritage", value: "art-heritage" },
   { label: "Tech & Writing", value: "tech-writing" },
@@ -62,7 +62,7 @@ export function FeaturedCreatorsSection({ onNudgeClick }: FeaturedCreatorsSectio
             {Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
-                className="w-[300px] sm:w-[320px] shrink-0 h-[340px] rounded-2xl bg-surface-container-low animate-pulse"
+                className="w-75 sm:w-[320px] shrink-0 h-85 rounded-2xl bg-surface-container-low animate-pulse"
               />
             ))}
           </div>
@@ -90,7 +90,7 @@ export function FeaturedCreatorsSection({ onNudgeClick }: FeaturedCreatorsSectio
         {!isLoading && !error && creators.length > 0 && (
           <div className="flex gap-6 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory">
             {creators.map((creator) => (
-              <div key={creator.id} className="snap-start">
+              <div key={creator.creatorID} className="snap-start">
                 <CreatorCard creator={creator} onNudgeClick={onNudgeClick} />
               </div>
             ))}

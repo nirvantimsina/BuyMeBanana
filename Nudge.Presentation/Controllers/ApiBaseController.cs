@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Nudge.Domain.Models;
 using System.Security.Claims;
 using Nudge.Shared.Wrappers;
+using ErrorOr;
 
 namespace Nudge.Presentation.Controllers
 {
@@ -24,7 +24,7 @@ namespace Nudge.Presentation.Controllers
         {
             get
             {
-                var claimValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var claimValue = User.FindFirstValue(ClaimTypes.Name);
                 return claimValue ?? string.Empty;
             }
         }
@@ -32,7 +32,7 @@ namespace Nudge.Presentation.Controllers
         {
             get
             {
-                var claimValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var claimValue = User.FindFirstValue(ClaimTypes.Role);
                 return int.TryParse(claimValue, out var roleid) ? roleid : 0;
             }
         }
@@ -44,6 +44,20 @@ namespace Nudge.Presentation.Controllers
             }
 
             return result.Success ? Ok(result) : BadRequest(result);
+        }
+
+        protected IActionResult HandleErrorOr<T>(ErrorOr<T> result)
+        {
+            return result.Match<IActionResult>(
+                data => Ok(ApiResponse<T>.Ok(data)),
+                errors => {
+                    var firstError = errors.First();
+                    // You can map specific ErrorOr types to correct HTTP Status Codes here
+                    return firstError.Type == ErrorType.NotFound 
+                        ? NotFound(ApiResponse.Fail(firstError.Description, firstError.Code))
+                        : BadRequest(ApiResponse.Fail(firstError.Description, firstError.Code));
+                }
+            );
         }
     }
 }

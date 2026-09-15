@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ApiError } from "@/lib/api-client";
+import { ApiServerError } from "@/src/lib/api-client";
 import type { NudgeCreator } from "../models/nudge.model";
 import { nudgeService } from "../services/nudge.service";
 
@@ -56,7 +56,7 @@ export function useNudgePreview(): UseNudgePreviewResult {
         );
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof ApiError ? err.message : "Couldn't load creators right now.");
+          setError(err instanceof ApiServerError ? err.message : "Couldn't load creators right now.");
         }
       } finally {
         if (!cancelled) setIsLoading(false);

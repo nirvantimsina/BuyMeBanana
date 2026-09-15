@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ApiError } from "@/lib/api-client";
+import { ApiServerError } from "@/src/lib/api-client";
 import type { Creator, CreatorCategory } from "../models/creator.model";
 import { creatorService } from "../services/creator.service";
 
@@ -26,9 +26,9 @@ export function useCreators(category: CreatorCategory = "all"): UseCreatorsResul
     setError(null);
     try {
       const data = await creatorService.getFeaturedCreators(category);
-      setCreators(data.items);
+      setCreators(Array.isArray(data) ? data : []);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't load creators. Please try again.");
+      setError(err instanceof ApiServerError ? err.message : "Couldn't load creators. Please try again.");
     } finally {
       setIsLoading(false);
     }

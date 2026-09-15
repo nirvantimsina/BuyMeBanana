@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { useNudgePreview } from "@/features/nudge/hooks/useNudgePreview";
-import { useSendNudge } from "@/features/nudge/hooks/useSendNudge";
+import { useNudgePreview } from "@/src/features/nudge/hooks/useNudgePreview";
+import { useSendNudge } from "@/src/features/nudge/hooks/useSendNudge";
 
 export interface LiveNudgePreviewProps {
   /** Called after a nudge is successfully created, receives the payment URL */

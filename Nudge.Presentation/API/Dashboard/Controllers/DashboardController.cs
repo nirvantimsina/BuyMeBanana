@@ -16,8 +16,7 @@ namespace Nudge.Presentation.Controllers
             query.UserId = CurrentUserId;
             ErrorOr<DashboardResponseModel> result = await mediator.Send(query);
 
-            return result.Match<IActionResult>(data => Ok(ApiResponse.Ok(data)),
-                errors => BadRequest(ApiResponse.Fail(errors.First().Description, errors.First().Code)));
+            return HandleErrorOr(result);
         }
     }
 }

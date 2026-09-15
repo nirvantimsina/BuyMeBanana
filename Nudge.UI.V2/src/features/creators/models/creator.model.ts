@@ -1,24 +1,19 @@
 export type CreatorCategory =
   | "all"
-  | "filmmakers"
+  | "streamer"
   | "music"
   | "art-heritage"
   | "tech-writing";
 
 export interface Creator {
-  id: string;
+  creatorID: string;
   slug: string;
-  /** e.g. "Storyteller", "Art & History", "Indie Folk" — shown as the card's top-left badge */
-  category: string;
+  category: string; 
   name: string;
   description: string;
   nudgeCount: number;
-  avatarUrl: string;
-  /** e.g. "Cinema Guild" — the creator's current tier/guild label */
+  avatar: string;
   tierName: string;
 }
 
-export interface CreatorListResponse {
-  items: Creator[];
-  total: number;
-}
+export type CreatorListResponse = Creator[];

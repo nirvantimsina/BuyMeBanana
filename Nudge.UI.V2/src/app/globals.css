@@ -1,145 +1,31 @@
-@import "tailwindcss";
+@import "./theme.css";
 
-@theme {
-  /* Core surfaces & text */
-  --color-background: #fff9ed;
-  --color-on-background: #1e1c13;
-  --color-surface: #fff9ed;
-  --color-surface-dim: #e0d9cc;
-  --color-surface-bright: #fff9ed;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #faf3e5;
-  --color-surface-container: #f4ede0;
-  --color-surface-container-high: #eee8da;
-  --color-surface-container-highest: #e8e2d5;
-  --color-surface-variant: #e8e2d5;
-  --color-on-surface: #1e1c13;
-  --color-on-surface-variant: #58423b;
-  --color-surface-tint: #a83914;
-  --color-inverse-surface: #333027;
-  --color-inverse-on-surface: #f7f0e2;
-  --color-outline: #8c716a;
-  --color-outline-variant: #dfc0b7;
-
-  /* Primary (terracotta) */
-  --color-primary: #9b2f0a;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #bc4722;
-  --color-on-primary-container: #ffede8;
-  --color-primary-fixed: #ffdbd1;
-  --color-primary-fixed-dim: #ffb59f;
-  --color-on-primary-fixed: #3a0a00;
-  --color-on-primary-fixed-variant: #862300;
-  --color-inverse-primary: #ffb59f;
-
-  /* Secondary (marigold) */
-  --color-secondary: #7e5700;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #fdbe50;
-  --color-on-secondary-container: #714d00;
-  --color-secondary-fixed: #ffdead;
-  --color-secondary-fixed-dim: #fabc4d;
-  --color-on-secondary-fixed: #281900;
-  --color-on-secondary-fixed-variant: #604100;
-
-  /* Tertiary (pine green) */
-  --color-tertiary: #285f49;
-  --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #427861;
-  --color-on-tertiary-container: #c3fee1;
-  --color-tertiary-fixed: #b5efd3;
-  --color-tertiary-fixed-dim: #9ad3b7;
-  --color-on-tertiary-fixed: #002115;
-  --color-on-tertiary-fixed-variant: #17503b;
-
-  /* Error */
-  --color-error: #ba1a1a;
-  --color-on-error: #ffffff;
-  --color-error-container: #ffdad6;
-  --color-on-error-container: #93000a;
-
-  /* Fonts */
-  --font-brand: "Epilogue", system-ui, sans-serif;
-  --font-headline-sm: "Epilogue", system-ui, sans-serif;
-  --font-headline-md: "Epilogue", system-ui, sans-serif;
-  --font-headline-lg: "Epilogue", system-ui, sans-serif;
-  --font-display-hero: "Epilogue", system-ui, sans-serif;
-  --font-display-hero-mobile: "Epilogue", system-ui, sans-serif;
-  --font-body-sm: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body-md: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body-lg: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-label-sm: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-label-md: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-title-md: "Plus Jakarta Sans", system-ui, sans-serif;
-
-  /* Font sizes (v4 pairs a size with its line-height/weight/tracking) */
-  --text-headline-sm: 20px;
-  --text-headline-sm--line-height: 28px;
-  --text-headline-sm--font-weight: 600;
-
-  --text-headline-md: 24px;
-  --text-headline-md--line-height: 32px;
-  --text-headline-md--letter-spacing: -0.01em;
-  --text-headline-md--font-weight: 600;
-
-  --text-headline-lg: 32px;
-  --text-headline-lg--line-height: 40px;
-  --text-headline-lg--letter-spacing: -0.01em;
-  --text-headline-lg--font-weight: 700;
-
-  --text-display-hero-mobile: 34px;
-  --text-display-hero-mobile--line-height: 42px;
-  --text-display-hero-mobile--letter-spacing: -0.015em;
-  --text-display-hero-mobile--font-weight: 700;
-
-  --text-display-hero: 48px;
-  --text-display-hero--line-height: 56px;
-  --text-display-hero--letter-spacing: -0.02em;
-  --text-display-hero--font-weight: 700;
-
-  --text-body-sm: 13px;
-  --text-body-sm--line-height: 20px;
-
-  --text-body-md: 15px;
-  --text-body-md--line-height: 24px;
-
-  --text-body-lg: 18px;
-  --text-body-lg--line-height: 28px;
-
-  --text-label-sm: 11px;
-  --text-label-sm--line-height: 16px;
-  --text-label-sm--letter-spacing: 0.04em;
-  --text-label-sm--font-weight: 700;
-
-  --text-label-md: 14px;
-  --text-label-md--line-height: 20px;
-  --text-label-md--letter-spacing: 0.01em;
-  --text-label-md--font-weight: 600;
-
-  --text-title-md: 18px;
-  --text-title-md--line-height: 26px;
-  --text-title-md--font-weight: 600;
-
-  /* Spacing scale */
-  --spacing-space-2xs: 0.25rem;
-  --spacing-space-xs: 0.5rem;
-  --spacing-space-sm: 0.75rem;
-  --spacing-space-md: 1rem;
-  --spacing-space-lg: 1.5rem;
-  --spacing-space-xl: 2rem;
-  --spacing-space-2xl: 3rem;
-  --spacing-space-3xl: 4.5rem;
-  --spacing-gutter: 1.25rem;
-  --spacing-gutter-desktop: 2rem;
-  --spacing-margin: 1rem;
-  --spacing-margin-tablet: 2rem;
-  --spacing-margin-desktop: 4rem;
+/* Subtle dotted background used behind the hero + main content area */
+.nepal-mandala-bg {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(188, 71, 34, 0.04) 0,
+    rgba(188, 71, 34, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
 }
 
-@layer base {
-  body {
-    background-color: var(--color-background);
-    color: var(--color-on-background);
-    font-family: var(--font-body-md);
+/* Diagonal hairline pattern used on card banner overlays */
+.subtle-pagoda-border {
+  background-image: repeating-linear-gradient(45deg, #dfc0b7 0, #dfc0b7 1px, transparent 0, transparent 8px);
+}
+
+/* Pulsing glow on the stream alert card in the OBS overlay mockup */
+@keyframes pulse-alert-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 190, 80, 0.4);
   }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(253, 190, 80, 0.25);
+  }
+}
+.stream-alert-glow {
+  animation: pulse-alert-glow 3s infinite ease-in-out;
 }
