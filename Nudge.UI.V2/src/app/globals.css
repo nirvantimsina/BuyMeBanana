@@ -1,0 +1,31 @@
+@import "./theme.css";
+
+/* Subtle dotted background used behind the hero + main content area */
+.nepal-mandala-bg {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(188, 71, 34, 0.04) 0,
+    rgba(188, 71, 34, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Diagonal hairline pattern used on card banner overlays */
+.subtle-pagoda-border {
+  background-image: repeating-linear-gradient(45deg, #dfc0b7 0, #dfc0b7 1px, transparent 0, transparent 8px);
+}
+
+/* Pulsing glow on the stream alert card in the OBS overlay mockup */
+@keyframes pulse-alert-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 190, 80, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(253, 190, 80, 0.25);
+  }
+}
+.stream-alert-glow {
+  animation: pulse-alert-glow 3s infinite ease-in-out;
+}
