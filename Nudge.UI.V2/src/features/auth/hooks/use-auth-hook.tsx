@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { authService } from "@/src/features/auth/auth-service";
-import { LoginRequest } from "@/src/features/auth/auth-models";
-import { ApiServerError } from "@/src/services/api-client";
+import { authService } from "@/src/features/auth/services/auth-service";
+import { LoginRequest } from "@/src/features/auth/models/auth-models";
+import { ApiServerError } from "@/src/lib/api-client";
 import { getErrorMessage } from "@/src/constants/error-codes";
 
 export function useAuth() {

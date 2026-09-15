@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAuth } from "@/src/features/auth/use-auth-hook";
+import { useAuth } from "@/src/features/auth/hooks/use-auth-hook";
 import { FormCard } from "@/src/components/ui/form-card";
 import { InputField } from "@/src/components/ui/input-field";
 import { Button } from "@/src/components/primitives/button";
