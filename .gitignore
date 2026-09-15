@@ -2,10 +2,10 @@
 [Bb]in/
 [Oo]bj/
 # Ignore specifically for the UI path
-**/BMAB_UI/bin/
-**/BMAB_UI/obj/
-**/BMAB_ui/bin/
-**/BMAB_ui/obj/
+**/Nudge_UI/bin/
+**/Nudge_UI/obj/
+**/Nudge_ui/bin/
+**/Nudge_ui/obj/
 
 **/bin/
 **/obj/
@@ -16,14 +16,14 @@
 .idea/
 
 .vscode/
-BMAB_API/BMAB_API.csproj.lscache
-BMAB_UI/BMAB_UI.csproj.lscache
-/BMAB_API/.vs
+Nudge_API/Nudge_API.csproj.lscache
+Nudge_UI/Nudge_UI.csproj.lscache
+/Nudge_API/.vs
 
 # VS Code C# Dev Tools - Auto-generated runners
 .vscodecsdt/Runners/
 /.vs
-/BMAB.Presentation/.vs
+/Nudge.Presentation/.vs
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
